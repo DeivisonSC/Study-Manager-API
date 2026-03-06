@@ -33,7 +33,7 @@ A estrutura do projeto foi baseada nos princípios da Arquitetura Limpa (Clean A
 5. Inicie o servidor de desenvolvimento: `nom run dev`
    API estára rodando em 
 
-Usuários (Users)
+Usuários (Users):
 POST /users - Cria um novo usuário
 GET /users - Lista todos os usuários
 GET /users/:id - Busca um usuário específico
@@ -41,7 +41,7 @@ PUT /users/:id - Atualiza dados do usuário
 DELETE /users/:id - Remove um usuário
 GET /users/:id/courses - (Consulta Relacional) Retorna o usuário e a lista de cursos matriculados
 
-Cursos (Courses)
+Cursos (Courses):
 POST /courses - Cria um novo curso
 GET /courses - Lista todos os cursos
 GET /courses/:id - Busca um curso específico
