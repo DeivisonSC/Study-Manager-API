@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// Configuração do Prisma e do Banco de Dados
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+//usuario
+model User {
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String       @unique
+  createdAt   DateTime     @default(now())
+  
+  enrollments Enrollment[]
+}
+//curso
+model Course {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  workload    Int         
+  enrollments Enrollment[]
+}
+//matricula
+model Enrollment {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  courseId   Int
+  enrolledAt DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id])
+  course     Course   @relation(fields: [courseId], references: [id])
+//garante que o usuario nao possa realizar matricula 2 vezes no mesmo curso
+  @@unique([userId, courseId])
+}
