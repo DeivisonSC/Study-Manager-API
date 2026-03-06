@@ -25,3 +25,28 @@ A estrutura do projeto foi baseada nos princípios da Arquitetura Limpa (Clean A
    ```bash
    git clone [https://github.com/SEU_USUARIO/study-manager-api.git](https://github.com/SEU_USUARIO/study-manager-api.git)
    cd study-manager-api
+
+2. Instale as dependências: `npm install`
+3. Crie um arquivo .env na raiz do projeto e adicione a URL de conexão do seu banco de dados PostgreSQL:
+   Ex: DATABASE_URL="postgresql://usuario:senha@localhost:5432/study-manager-api?schema=public"
+4.Rode as migrations do prisma
+5. Inicie o servidor de desenvolvimento: `nom run dev`
+   API estára rodando em 
+
+Usuários (Users)
+POST /users - Cria um novo usuário
+GET /users - Lista todos os usuários
+GET /users/:id - Busca um usuário específico
+PUT /users/:id - Atualiza dados do usuário
+DELETE /users/:id - Remove um usuário
+GET /users/:id/courses - (Consulta Relacional) Retorna o usuário e a lista de cursos matriculados
+
+Cursos (Courses)
+POST /courses - Cria um novo curso
+GET /courses - Lista todos os cursos
+GET /courses/:id - Busca um curso específico
+PUT /courses/:id - Atualiza um curso
+DELETE /courses/:id - Remove um curso
+
+Matrículas (Enrollments)
+POST /enrollments - Matricula um usuário em um curso (Valida existência e duplicidade)
